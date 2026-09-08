@@ -1,0 +1,11 @@
+{
+  "schema_version": 1,
+  "projects": [
+    {
+      "path": "example_math_problem",
+      "title": "Example math problem",
+      "role": "example",
+      "description": "Reusable example workspace; do not store active research here by default"
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Lean Formalization Handoff"
+  short_description: "Export audited proofs for controlled Lean verification"
+  default_prompt: "Use $formalization-handoff to export an audited proof for controlled Lean verification."

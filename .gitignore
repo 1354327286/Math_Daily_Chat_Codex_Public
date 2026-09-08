@@ -1,0 +1,69 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+tmp/
+/work/
+/*/work/
+
+.agents/
+.codex/
+
+.lancedb/
+*.lancedb/
+*.extracted/
+
+
+# Private research data in any top-level problem directory.
+/*/research_state.md
+/*/goal.md
+/*/progress.md
+/*/subgoal.md
+/*/20??-??-??.md
+
+/*/notes/**
+!/*/notes/
+!/*/notes/.gitkeep
+
+/*/memory/**
+!/*/memory/
+!/*/memory/.gitkeep
+
+/*/refs/**
+!/*/refs/
+!/*/refs/.gitkeep
+
+/*/downloads/**
+!/*/downloads/
+!/*/downloads/.gitkeep
+
+# Disposable offline HTML reading packages.
+/*/exports/**
+
+# Drop unprocessed research reports here instead of the repository root.
+inbox/**
+!inbox/
+!inbox/README.md
+
+# Local relay files for web-only Pro research runs in each problem.
+/*/handoff/**
+!/*/handoff/
+!/*/handoff/.gitkeep
+
+.DS_Store
+Thumbs.db
+
+# Unreviewed root notes and local output are private.
+/*.md
+!/README.md
+!/AGENTS.md
+/output/
+/.tmp/
+/$build/
+/$out/
+
+# The reusable state template is public.
+!/templates/research_state.md

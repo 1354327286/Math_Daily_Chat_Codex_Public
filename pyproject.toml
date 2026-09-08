@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "math-daily-chat-codex"
+version = "0.1.0"
+description = "Local tooling and framework for persistent mathematical research with Codex"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+  "requests>=2.31,<3",
+]
+
+[project.optional-dependencies]
+semantic = [
+  "lancedb>=0.20",
+  "pyarrow>=15",
+]
+
+[tool.setuptools]
+py-modules = ["reference_index", "search_arxiv_theorems", "search_references"]

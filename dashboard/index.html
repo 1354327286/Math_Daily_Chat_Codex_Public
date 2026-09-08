@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Math Research</title>
+  <link rel="stylesheet" href="/vendor/katex/katex.min.css">
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">∑</div>
+      <div>
+        <h1>Math Research</h1>
+        <p id="generatedAt">Loading local state</p>
+      </div>
+    </div>
+    <div class="toolbar">
+      <label class="search-field">
+        <span aria-hidden="true">⌕</span>
+        <input id="projectSearch" type="search" placeholder="Search projects" autocomplete="off">
+      </label>
+      <label class="select-field">
+        <span>Role</span>
+        <select id="roleFilter">
+          <option value="all">All</option>
+        </select>
+      </label>
+      <button id="refreshButton" class="icon-button" type="button" title="Refresh dashboard" aria-label="Refresh dashboard">↻</button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <section id="metrics" class="metrics-band" aria-label="Research overview"></section>
+
+    <section id="listView" class="view">
+      <div class="section-heading">
+        <div>
+          <h2>Projects</h2>
+          <p id="projectCount"></p>
+        </div>
+      </div>
+      <div class="project-table-wrap">
+        <table class="project-table">
+          <colgroup>
+            <col class="col-project">
+            <col class="col-role">
+            <col class="col-date">
+            <col class="col-target">
+            <col class="col-next">
+            <col class="col-open">
+            <col class="col-handoff">
+          </colgroup>
+          <thead>
+            <tr>
+              <th>Project</th>
+              <th>Role</th>
+              <th>Updated</th>
+              <th>Current target</th>
+              <th>Next action</th>
+              <th class="numeric">Open</th>
+              <th class="numeric">Pro</th>
+            </tr>
+          </thead>
+          <tbody id="projectRows"></tbody>
+        </table>
+        <div id="emptyProjects" class="empty-state" hidden>No matching projects</div>
+      </div>
+    </section>
+
+    <section id="detailView" class="view" hidden>
+      <div class="detail-heading">
+        <button id="backButton" class="icon-button" type="button" title="Back to projects" aria-label="Back to projects">←</button>
+        <div class="detail-title">
+          <div class="detail-title-line">
+            <h2 id="detailName"></h2>
+            <span id="detailRole" class="role-label"></span>
+          </div>
+          <p id="detailDescription"></p>
+        </div>
+      </div>
+
+      <section class="state-band" aria-label="Current research state">
+        <div>
+          <span class="eyebrow">Status</span>
+          <p id="detailStatus"></p>
+        </div>
+        <div>
+          <span class="eyebrow">Confidence</span>
+          <p id="detailConfidence"></p>
+        </div>
+        <div class="state-date">
+          <span class="eyebrow">Last updated</span>
+          <p id="detailUpdated"></p>
+        </div>
+      </section>
+
+      <section class="goal-grid" aria-label="Current goal">
+        <div>
+          <span class="eyebrow">Target</span>
+          <p id="detailTarget"></p>
+        </div>
+        <div>
+          <span class="eyebrow">Next action</span>
+          <p id="detailNext"></p>
+        </div>
+        <div>
+          <span class="eyebrow">Blocker</span>
+          <p id="detailBlocker"></p>
+        </div>
+      </section>
+
+      <nav id="detailTabs" class="tabs" aria-label="Project sections"></nav>
+      <section id="detailContent" class="detail-content"></section>
+    </section>
+  </main>
+
+  <dialog id="fileDialog" class="file-dialog">
+    <header class="viewer-header">
+      <div class="viewer-title">
+        <span id="viewerType" class="file-type">MD</span>
+        <div>
+          <h2 id="viewerName"></h2>
+          <p id="viewerPath"></p>
+        </div>
+      </div>
+      <div class="viewer-actions">
+        <button id="outlineToggleButton" class="icon-button" type="button" title="Toggle contents" aria-label="Toggle contents" aria-pressed="false" hidden>☰</button>
+        <div id="viewerModes" class="segmented" hidden>
+          <button type="button" data-viewer-mode="rendered">Rendered</button>
+          <button type="button" data-viewer-mode="source">Source</button>
+        </div>
+        <button id="copyPathButton" class="icon-button" type="button" title="Copy absolute path" aria-label="Copy absolute path">⧉</button>
+        <button id="exportReaderButton" class="icon-button" type="button" title="Export offline reader package to this project's exports folder" aria-label="Export offline reader package" hidden>⇩</button>
+        <a id="openPublicButton" class="icon-button anchor-button" href="#" target="_blank" rel="noopener" title="Open public source" aria-label="Open public source" hidden>◎</a>
+        <a id="openRawButton" class="icon-button anchor-button" href="#" target="_blank" rel="noopener" title="Open PDF in a new tab" aria-label="Open PDF in a new tab" hidden>↗</a>
+        <button id="closeViewerButton" class="icon-button" type="button" title="Close viewer" aria-label="Close viewer">×</button>
+      </div>
+    </header>
+    <div id="viewerLayout" class="viewer-layout">
+      <aside id="viewerOutline" class="viewer-outline" aria-label="Document contents" hidden>
+        <div class="viewer-outline-header">
+          <strong>Contents</strong>
+          <button id="outlineStatementsButton" class="outline-statements-button" type="button" aria-pressed="false">Statements</button>
+        </div>
+        <nav id="viewerOutlineNav" class="viewer-outline-nav" aria-label="Reader headings"></nav>
+      </aside>
+      <div id="viewerBody" class="viewer-body"></div>
+    </div>
+  </dialog>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Long Autonomous Math Research"
+  short_description: "Run confirmed, resumable multi-wave math research"
+  default_prompt: "Use $long-autonomous-math-research to draft and confirm a frozen contract, then pursue the target in indexed waves until a lawful stop condition applies."

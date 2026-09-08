@@ -1,0 +1,24 @@
+name: Framework checks
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install base dependencies
+        run: python -m pip install -e .
+      - name: Compile scripts
+        run: python -m py_compile reference_index.py search_references.py search_arxiv_theorems.py scripts/check_public_scope.py scripts/check_project_registry.py scripts/check_reference_catalog.py scripts/create_math_project.py
+      - name: Run unit tests
+        run: python -m unittest discover -s tests -v
+      - name: Check public scope
+        run: python scripts/check_public_scope.py --tracked
+      - name: Check project registry
+        run: python scripts/check_project_registry.py

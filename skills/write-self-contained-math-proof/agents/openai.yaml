@@ -1,0 +1,4 @@
+interface:
+  display_name: "Write Self-Contained Math Proof"
+  short_description: "Clarify and present a closed standalone math proof"
+  default_prompt: "Use $write-self-contained-math-proof to resolve the exact deliverable and present a closed result as a standalone proof for review."
