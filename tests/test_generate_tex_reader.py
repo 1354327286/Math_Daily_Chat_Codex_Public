@@ -201,6 +201,8 @@ See \\cite[\\href{https://stacks.math.columbia.edu/tag/07NG}{Tag~07NG}]
         self.assertEqual(converter.title(), "First and Second")
 
     def test_starred_headings_preserve_theorem_counters(self):
+        # This replacement document has no compiled labels; discard the old fixture.
+        (self.notes / "build_test" / "proof.aux").unlink()
         self.source.write_text(r"""\documentclass{article}
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{definition}[theorem]{Definition}
